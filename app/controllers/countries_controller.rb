@@ -16,7 +16,6 @@ class CountriesController < ApplicationController
 
   # POST /countries
   def create
-
     @country = Country.new(country_params)
     if @country.save
       render json: @country.as_json(include: {reviews: {only: [:id, :city_visited, :date_visited, :experience, :likes]}})
