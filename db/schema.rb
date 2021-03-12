@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_080537) do
+ActiveRecord::Schema.define(version: 2021_03_12_192915) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_07_03_080537) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.integer "likes", default: 0
   end
 
   create_table "reviews", force: :cascade do |t|
