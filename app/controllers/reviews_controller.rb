@@ -23,10 +23,13 @@ class ReviewsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /reviews/1
   def update
     if @review.update(review_params)
-      render json: @review
+      render json: @review.as_json(include: {
+        country: {only: [:id, :city_visited, :date_visited, :experience, :likes]}
+      })
     else
       render json: @review.errors, status: :unprocessable_entity
     end
@@ -45,6 +48,6 @@ class ReviewsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def review_params
-      params.require(:review).permit(:id, :city_visited, :date_visited, :experience, :country_id, :likes)
+      params.require(:review).permit(:id, :city_visited, :date_visited, :experience, :likes, :country_id)
     end
 end
